@@ -46,8 +46,8 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
                         <div className="flex flex-col h-full overflow-x-auto mb-4">
                             <div className="flex flex-col h-full">
                                 <div className="grid grid-cols-12 gap-y-2">
-                                    {chats.map((chat) => (
-                                        <ChatMessage isLeftSide={chat.isLeftSide} message={chat.message} />
+                                    {chats.map((chat, index) => (
+                                        <ChatMessage key={index} isLeftSide={chat.isLeftSide} message={chat.message} />
                                     ))}
                                 </div>
                             </div>
