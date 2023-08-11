@@ -15,12 +15,18 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
         setChats((curChat) => [...curChat, { isLeftSide: you, message: msg }])
     };
 
+    const enterKeyPressed = (event) => {
+        if (event.keyCode === 13) {
+            handleAsk(event);
+        }
+    }
+
     function handleAsk(event: any) {
+        event.preventDefault();
         if (question.length < 1) {
             return;
         }
         addChat(true, question);
-        event.preventDefault();
         fetch("/api/openai", {
             method: "POST",
             headers: {
@@ -42,7 +48,7 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
         <div className="flex h-screen antialiased text-gray-800">
             <div className="flex flex-row h-full w-full overflow-x-hidden">
                 <div className="flex flex-col flex-auto h-full p-6">
-                    <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
+                    <div className="flex flex-col shadow-2xl flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
                         <div className="flex flex-col h-full overflow-x-auto mb-4">
                             <div className="flex flex-col h-full">
                                 <div className="grid grid-cols-12 gap-y-2">
@@ -52,7 +58,7 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
+                        <div className="flex flex-row items-center h-16 rounded-xl bg-gray-200 w-full px-2">
                             <div className="flex-grow ml-4">
                                 <div className="relative w-full">
                                     <input
@@ -60,15 +66,16 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
                                         name="question"
                                         placeholder="Enter your question here?"
                                         value={question}
-                                        className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10 shadow-inner"
+                                        className="flex w-full border rounded-xl focus:outline focus:border-cyan-300 pl-4 h-10 shadow-inner"
                                         onChange={(e) => setQuestion(e.target.value)}
+                                        onKeyDown={(e) => enterKeyPressed(e)}
                                     />
                                 </div>
                             </div>
                             <div className="ml-4">
                                 <button
                                     disabled={question.length < 1}
-                                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
+                                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-700 hover:sha rounded-xl text-white font-bold px-4 py-2 flex-shrink-0"
                                     onClick={(e) => handleAsk(e)}>
                                     <span>Ask</span>
                                     <span className="ml-2">
