@@ -15,7 +15,7 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
         setChats((curChat) => [...curChat, { isLeftSide: you, message: msg }])
     };
 
-    const enterKeyPressed = (event) => {
+    const enterKeyPressed = (event: any) => {
         if (event.keyCode === 13) {
             handleAsk(event);
         }
