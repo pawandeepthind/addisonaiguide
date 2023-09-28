@@ -11,7 +11,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     try {
         const completion = await openai.createChatCompletion({
             model: "gpt-4",
-
             messages: generateMessage(rq.content, rq.question),
             max_tokens: 100,
             n: 1,
