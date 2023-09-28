@@ -61,7 +61,7 @@ const Dictaphone = () => {
             </button>
             <div id="questions">
                 <div>
-                    {questions.map((q) => (<li>{q.question}</li>))}
+                    {questions.map((q, index) => (<li key={index}>{q.question}</li>))}
                 </div>
             </div>
         </div>
