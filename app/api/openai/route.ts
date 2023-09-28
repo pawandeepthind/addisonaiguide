@@ -10,13 +10,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const rq = await req.json()
     try {
         const completion = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4",
+
             messages: generateMessage(rq.content, rq.question),
             max_tokens: 100,
             n: 1,
             temperature: 1,
         })
-        console.log("response:", completion);
         return NextResponse.json({ result: completion.data.choices[0].message?.content });
         // return NextResponse.json({ result: req.body.toUpperCase() });
     } catch(error) {
