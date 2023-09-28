@@ -1,12 +1,11 @@
-"use client"
+'use client'
 
-import 'regenerator-runtime/runtime'
 import React from 'react';
 import Dictaphone from '@/components/Dictaphone';
 
 const Home: React.FC = () => {
     return (
-        <div className='flex justify-center'>
+        <div className="flex justify-center mt-10 mb-5 h-screen">
             <Dictaphone />
         </div>
     );
