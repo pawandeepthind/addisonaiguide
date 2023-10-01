@@ -12,9 +12,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
         const completion = await openai.createChatCompletion({
             model: "gpt-4",
             messages: generateMessage(rq.content, rq.question),
-            max_tokens: 100,
+            max_tokens: 60,
             n: 1,
-            temperature: 1,
+            temperature: 0.2,
         })
         return NextResponse.json({ result: completion.data.choices[0].message?.content });
         // return NextResponse.json({ result: req.body.toUpperCase() });

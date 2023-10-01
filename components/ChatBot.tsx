@@ -27,6 +27,7 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
             return;
         }
         addChat(true, question);
+        setQuestion("");
         fetch("/api/openai", {
             method: "POST",
             headers: {
@@ -40,7 +41,6 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
             .then(function (response) {
                 console.log("resp:", response.result);
                 addChat(false, response.result);
-                setQuestion("");
             })
     }
 
