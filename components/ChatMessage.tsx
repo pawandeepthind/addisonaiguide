@@ -18,7 +18,7 @@ export default function Avtar({ isLeftSide, message }: { isLeftSide: boolean, me
                     </div>
                     <div className="flex relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
                         <div>{message}</div>
-                        <div className="pl-3"><SpeakerWaveIcon className="bg-slate-200 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div>
+                        {/* <div className="pl-3"><SpeakerWaveIcon className="bg-slate-200 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div> */}
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ export default function Avtar({ isLeftSide, message }: { isLeftSide: boolean, me
                     </div>
                     <div className="flex relative mr-3 text-sm bg-blue-100 py-2 px-4 shadow rounded-xl">
                         <div>{message}</div>
-                        <div className="pl-3"><SpeakerWaveIcon className="bg-slate-300 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div>
+                        {/* <div className="pl-3"><SpeakerWaveIcon className="bg-slate-300 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div> */}
                     </div>
                 </div>
             </div>
