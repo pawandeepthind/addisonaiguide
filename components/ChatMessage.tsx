@@ -11,29 +11,17 @@ export default function Avtar({ isLeftSide, message }: { isLeftSide: boolean, me
     let retElement;
     if (isLeftSide) {
         retElement = (
-            <div className="col-start-1 col-end-8 p-3 rounded-lg">
-                <div className="flex flex-row items-center">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-red-300 text-red-700 flex-shrink-0">
-                        You
-                    </div>
-                    <div className="flex relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
-                        <div>{message}</div>
-                        {/* <div className="pl-3"><SpeakerWaveIcon className="bg-slate-200 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div> */}
-                    </div>
+            <div className="col-start-1 col-end-12 p-1 rounded-sm">
+                <div className="flex relative text-l bg-white py-2 px-4 rounded-md border-gray-300 border-2">
+                    <div><b>You </b> <div>{message}</div></div>
                 </div>
             </div>
         );
     } else {
         retElement = (
-            <div className="col-start-6 col-end-13 p-3 rounded-lg">
-                <div className="flex items-center justify-start flex-row-reverse">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-blue-400 flex-shrink-0">
-                        AI
-                    </div>
-                    <div className="flex relative mr-3 text-sm bg-blue-100 py-2 px-4 shadow rounded-xl">
-                        <div>{message}</div>
-                        {/* <div className="pl-3"><SpeakerWaveIcon className="bg-slate-300 hover:shadow-lg rounded-md" width={25} onClick={(e) => speak(message)}></SpeakerWaveIcon></div> */}
-                    </div>
+            <div className="col-start-1 col-end-12 p-1 rounded-sm ">
+                <div className="text-l bg-blue-100 py-2 px-4 rounded-md border-blue-300 border-2 items-start">
+                    <div className='text-right'><b>Guide</b> <div>{message}</div></div>
                 </div>
             </div>
         )

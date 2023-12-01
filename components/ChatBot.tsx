@@ -45,20 +45,11 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
     }
 
     return (
-        <div className="flex h-screen antialiased text-gray-800">
+        <div className="flex h-screen text-gray-800">
             <div className="flex flex-row h-full w-full overflow-x-hidden">
-                <div className="flex flex-col flex-auto h-full p-6">
-                    <div className="flex flex-col shadow-2xl flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
-                        <div className="flex flex-col h-full overflow-x-auto mb-4">
-                            <div className="flex flex-col h-full">
-                                <div className="grid grid-cols-12 gap-y-2">
-                                    {chats.map((chat, index) => (
-                                        <ChatMessage key={index} isLeftSide={chat.isLeftSide} message={chat.message} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-row items-center h-16 rounded-xl bg-gray-200 w-full px-2">
+                <div className="flex flex-col flex-auto h-full">
+                    <div className="flex flex-col flex-auto flex-shrink-0 bg-gray-200 h-full">
+                        <div className="flex flex-row items-center h-16 bg-gray-400 w-full px-1">
                             <div className="flex-grow ml-4">
                                 <div className="relative w-full">
                                     <input
@@ -66,7 +57,7 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
                                         name="question"
                                         placeholder="Enter your question here?"
                                         value={question}
-                                        className="flex w-full border rounded-xl focus:outline focus:border-cyan-300 pl-4 h-10 shadow-inner"
+                                        className="flex w-full border pl-4 h-10"
                                         onChange={(e) => setQuestion(e.target.value)}
                                         onKeyDown={(e) => enterKeyPressed(e)}
                                     />
@@ -75,26 +66,20 @@ export default function ChatBot({ slug, body }: { slug: string, body: string }) 
                             <div className="ml-4">
                                 <button
                                     disabled={question.length < 1}
-                                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-700 hover:sha rounded-xl text-white font-bold px-4 py-2 flex-shrink-0"
+                                    className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-700 hover:sha rounded-lg text-white px-4 py-2 flex-shrink-0"
                                     onClick={(e) => handleAsk(e)}>
-                                    <span>Ask</span>
-                                    <span className="ml-2">
-                                        <svg
-                                            className="w-4 h-4 transform rotate-45 -mt-px"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                                            ></path>
-                                        </svg>
-                                    </span>
+                                    <span>Ask Question</span>
                                 </button>
+                            </div>
+                        </div>
+                        <div className="flex flex-col h-full overflow-x-auto mb-4">
+                            <div className="flex flex-col h-full">
+                                <div className="grid grid-cols-14 gap-y-1">
+                                    <ChatMessage key={0} isLeftSide={false} message={'Hello! How can I assist you today at the Addison Gallery of American Art?'} />
+                                    {chats.map((chat, index) => (
+                                        <ChatMessage key={index} isLeftSide={chat.isLeftSide} message={chat.message} />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>

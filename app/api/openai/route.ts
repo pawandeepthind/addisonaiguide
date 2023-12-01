@@ -11,7 +11,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     try {
         const completion = await openai.createChatCompletion({
             model: "gpt-4",
-            messages: generateMessage(rq.content, rq.question),
+            messages: generateMessage(rq.content, rq.wikiLink, rq.question),
             max_tokens: 60,
             n: 1,
             temperature: 0.2,
@@ -24,10 +24,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
-function generateMessage(body: string, question: string): Array<ChatCompletionRequestMessage> {
+function generateMessage(body: string, wikiLink: string, question: string): Array<ChatCompletionRequestMessage> {
     return [
         { role: "system", content: 'You are guide in Addison Gallery of American Art and you have to answer question based on below content. Be very courtious and helpful'},
-        { role: "assistant", content: body},
+        { role: "assistant", content: "You can use this context: " + body},
+        { role: "assistant", content: "You can use this is Wiki page for additional context: " + wikiLink},
         { role: "user", content: question}
     ];
 }
