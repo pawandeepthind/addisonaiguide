@@ -21,7 +21,7 @@ export default function Avtar({ isLeftSide, message }: { isLeftSide: boolean, me
         retElement = (
             <div className="col-start-1 col-end-12 p-1 rounded-sm ">
                 <div className="text-l bg-blue-100 py-2 px-4 rounded-md border-blue-300 border-2 items-start">
-                    <div className='text-right'><b>Guide</b> <div>{message}</div></div>
+                    <div className='text-right'><b>Guide</b> <div className='text-left'>{message}</div></div>
                 </div>
             </div>
         )
