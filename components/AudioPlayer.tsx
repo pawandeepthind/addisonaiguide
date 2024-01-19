@@ -3,12 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image';
 
-export default async function ArticleAudio({ slug, title, image, body }: { slug: string, title: string, image: string, body: string }) {
-    useEffect(() => {
-        handleStart();
-      }, []);
-
-      
+export default function ArticleAudio({ slug, title, image, body }: { slug: string, title: string, image: string, body: string }) {
     const handleStart = () => {
         window.speechSynthesis.speak(new SpeechSynthesisUtterance(body));
     }
@@ -17,6 +12,10 @@ export default async function ArticleAudio({ slug, title, image, body }: { slug:
         window.speechSynthesis.cancel();
     }
 
+    useEffect(() => {
+        handleStart();
+      }, []);
+      
     return (
         <div className='m-5'>
             <h1 className='pb-5 text-3xl text-white-800'>{title}</h1>
