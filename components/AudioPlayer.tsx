@@ -14,8 +14,8 @@ export default function ArticleAudio({ slug, title, image, body }: { slug: strin
 
     useEffect(() => {
         handleStart();
-      }, []);
-      
+      });
+
     return (
         <div className='m-5'>
             <h1 className='pb-5 text-3xl text-white-800'>{title}</h1>
