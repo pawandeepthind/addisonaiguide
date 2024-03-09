@@ -17,7 +17,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
             temperature: 0.2,
         })
         return NextResponse.json({ result: completion.data.choices[0].message?.content });
-        // return NextResponse.json({ result: req.body.toUpperCase() });
     } catch(error) {
         console.error('Error creating chat completion:', error);
         return NextResponse.json({ result: '' + error });
@@ -29,7 +28,7 @@ function generateMessage(body: string, wikiLink: string, question: string): Arra
         { role: "system", content: 'You are guide in Addison Gallery of American Art and you have to answer question based on below content. Be very courtious and helpful'},
         { role: "assistant", content: "You can use this context: " + body},
         { role: "assistant", content: "You can use this is Wiki page for additional context: " + wikiLink},
-        { role: "assistant", content: "Please dont break the reply abruptly.}"},
+        { role: "assistant", content: "Please restrict your answer to one paragraph.}"},
         { role: "user", content: question}
     ];
 }
